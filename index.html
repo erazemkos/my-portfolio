@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="description"
+      content="Welcome to my portfolio website. I am a software developer with professional experience in AI/ML, computer vision and full-stack projects."
+    />
+
+<meta itemprop="name" content="Erazem Kos's Portfolio">
+<meta itemprop="description" content="Welcome to my portfolio website. I am a software developer with professional experience in AI/ML, computer vision and full-stack projects.">
+
+<!-- Reference screenshot of updated site's header in place of content -->
+<meta itemprop="image" content="/static/images/sharing-card.png">
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="https://ossportfolio.netlify.app">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Erazem Kos's Portfolio">
+<meta property="og:description" content="Welcome to my portfolio website. I am a software developer with professional experience in AI/ML, computer vision and full-stack projects.">
+
+<meta property="og:image" content="/static/images/sharing-card.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Erazem Kos's Portfolio">
+<meta name="twitter:description" content="Welcome to my portfolio website. I am a front-end web developer and I specialize in creating user-friendly, responsive and accessible websites. Explore my projects, open-source work and contact me for any inquiries or collaborations.">
+
+<meta name="twitter:image" content="/static/images/sharing-card.png">
+
+
+<!-- Update favicon href attribute with image of yourself -->
+    <link
+      rel="shortcut icon"
+      href="/static/images/favicons.png"
+      type="image/png"
+    />
+
+    <!-- Preloading fonts for better performance -->
+
+    <link
+      rel="preload"
+      href="/static/fonts/Mona-Sans.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link rel="stylesheet" href="/static/style.css"  />
+    <script src="/static/script.js" defer></script>
+
+    <title>Erazem Kos's Portfolio</title>
+  </head>
+
+  <body class="dark">
+
+    <script>
+      const theme = localStorage.getItem("theme") || "dark";
+      document.body.classList.add(theme);
+    </script>
+
+    <header class="header">
+
+      <div class="container">
+        <div class="header-textbox">
+
+          <h1 class="h1">
+            <span>Hi, I'm Erazem Kos.</span>
+          </h1>
+
+          <p class="header-text">
+            A software developer with professional experience in AI/ML, computer vision and full-stack projects. Capable of independent endeavours while also being a team player.
+          </p>
+
+          <div class="header-btns">
+            <a href="#contact" class="btn btn-cta">Hire me</a>
+            <a href="#work" class="btn btn-secondary">See my work</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="client">
+        <div class="container">
+          <h2 class="h2">Trusted by</h2>
+          <div class="logos">
+            <div class="logo-group">
+              <img
+                loading="lazy"
+                src="/static/images/trusted-by/crea.jpg"
+                alt="Ideacraft"
+                class="logo hide to-top"
+              />
+
+              <img
+                loading="lazy"
+                src="/static/images/trusted-by/guardiaris.png"
+                alt="Golden grid"
+                class="logo"
+              />
+
+              <img
+                loading="lazy"
+                src="/static/images/trusted-by/lst.png"
+                alt="Theia"
+                class="logo hide to-bottom"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="work">
+        <div class="container">
+          <h2 class="h2" id="work">My Experience</h2>
+          <div class="work-boxes">
+            <div class="work-box" id="video-work-box">
+              <div class="work-textbox">
+                <h3 class="h3">Brain aneurysm detection</h3>
+                <p class="work-text">
+                  Using technologies such as pytorch and opencv, me and my university colleague developed a published intracranial aneurysm detection pipeline which outperformed state-of-the-art solutions and medical professionals.
+                </p>
+                <ol class="work-technologies">
+                  <li>Python</li>
+                  <li>Pytorch</li>
+                  <li>OpenCV</li>
+                  <li>QT</li>
+                  <li>VTK</li>
+                </ol>
+                <div class="work-links">
+                  <a href="#" target="_blank" rel="noopener" class="link"
+                    >Explore this project</a
+                  >
+                  <a
+                    href="https://www.youtube.com/embed/3L2SFQTAeJc"
+                    target="_blank"
+                    rel="noopener"
+                    title="Source code"
+                  >
+                  </a>
+                </div>
+              </div>
+
+              <picture class="work-img">
+                <iframe
+                  src="https://www.youtube.com/embed/3L2SFQTAeJc?autoplay=1&mute=1&controls=0&modestbranding=1&showinfo=0&rel=0&loop=1&playlist=3L2SFQTAeJc&start=30"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  style="pointer-events: none;"
+                  allowfullscreen>
+              </iframe>
+              </picture>
+            </div>
+            <div class="work-box">
+              <div class="work-textbox">
+                <h3 class="h3">Guardiaris</h3>
+                <p class="work-text">As a student I started working in Guardiaris LLM and 
+                  after finishing my studies, I got a permanent position in their computer vision/AI R&D department. 
+                  I developed novel accurate real-time camera pose estimation systems using a plethora of different cameras for military simulation purposes. 
+                  I left the company on good terms in pursuit of new challenges.</p>
+                <ol class="work-technologies">
+                  <li>Python</li>
+                  <li>C++</li>
+                  <li>Pytorch</li>
+                  <li>OpenCV</li>
+                  <li>C#</li>
+                </ol>
+                <div class="work-links">
+                  <a href="#" target="_blank" rel="noopener" class="link"
+                    >Visit their site</a
+                  >
+                  <a
+                    href="https://www.guardiaris.com/"
+                    target="_blank"
+                    rel="noopener"
+                    title="Source code"
+                  >
+                  </a>
+                </div>
+              </div>
+              <picture class="work-img">
+                <img
+                  loading="lazy"
+                  src="/static/images/work/simulation.webp"
+                  alt="portfolio template"
+                />
+              </picture>
+            </div>
+            <div class="work-box">
+              <div class="work-textbox">
+                <h3 class="h3">Crea</h3>
+                <p class="work-text">
+                  I took the offer from Crea LLM where I currently develop business process management applications for large insurance companies.
+                </p>
+                <ol class="work-technologies">
+                  <li>C#</li>
+                  <li>SQL</li>
+                  <li>Python</li>
+                  <li>Appian</li>
+                </ol>
+                <div class="work-links">
+                  <a href="#" target="_blank" rel="noopener" class="link"
+                    >Visit their site</a
+                  >
+                  <a
+                    href="https://www.crea.si/"
+                    target="_blank"
+                    rel="noopener"
+                    title="Source code"
+                  >
+                  </a>
+                </div>
+              </div>
+              <picture class="work-img">
+                <img
+                  loading="lazy"
+                  src="/static/images/work/bpm.webp"
+                  alt="contribute dev"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="skills">
+        <div class="container">
+          <h2 class="h2" id="skills">My Toolkit</h2>
+          <div class="skills-imgs">
+                <img src="/static/images/skills/Python.svg" alt="Python" class="skills-img" loading="lazy" title="Python">
+                <img src="/static/images/skills/CPlusPlus.svg" alt="C++" class="skills-img" loading="lazy" title="C++">
+                 <img src="/static/images/skills/CSharp.svg" alt="C#" class="skills-img" loading="lazy" title="C#">
+                 <img src="/static/images/skills/pytorch.png" alt="Pytorch" class="skills-img" loading="lazy" title="Pytorch">
+                 <img src="/static/images/skills/shell.webp" alt="Shell" class="skills-img" loading="lazy" title="Shell">
+                 <img src="/static/images/skills/sql.svg" alt="SQL" class="skills-img" loading="lazy" title="SQL">
+                 <img src="/static/images/skills/docker.png" alt="Docker" class="skills-img" loading="lazy" title="Docker">
+                 <img src="/static/images/skills/git.webp" alt="Git" class="skills-img" loading="lazy" title="Git">
+                 <img src="/static/images/skills/opencv.png" alt="OpenCV" class="skills-img" loading="lazy" title="OpenCV">
+                 <img src="/static/images/skills/rust.png" alt="Rust" class="skills-img" loading="lazy" title="Rust">
+            </figure>
+          </div>
+        </div>
+      </section>
+      <!-- future testimonials
+      <section>
+        <h2 class="h2">Testimonials</h2>
+        <div class="container">
+          <ol class="testimonials">
+            <li class="testimonial">
+              <blockquote class="testimonial-text">
+                In clinical practice, the implementation of the mentioned program would be very beneficial, 
+                as it would facilitate the work of the radiologist in detecting, marking, and measuring the size of aneurysms. 
+                It would allow for double-checking when reading MR scans, thereby contributing to better sensitivity in the detection of aneurysms.
+                 The program would also speed up our everyday work, as it allows for automatic measuring of aneurysms, thus enabling easier and quicker 
+                 comparison with previous MR images.
+              </blockquote>
+              <figure class="testimonial-author">
+                <img
+                  src="/static/images/testimonials/andrej-planinc.webp"
+                  alt="Andrej Planinc, MD, Specialist in Radiology"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <h3 class="testimonial-author-name">Andrej Planinc</h3>
+                  <p class="testimonial-author-job">MD, Specialist in Radiology</p>
+                </figcaption>
+              </figure>
+            </li>
+          </ol>
+        </div>
+      </section>
+      -->
+      <section class="contact">
+        <div class="container">
+          <h2 class="h2" id="contact">Send Message</h2>
+          <div class="contact-content">
+            <div class="contact-textbox">
+              <strong href="#" class="hire-alert">
+                <span class="indicator"></span>
+                Available for hire
+              </strong>
+              <p class="contact-text">
+                As an AI/ML Computer Vision and Full Stack Engineer, 
+                I specialize in developing cutting-edge applications and systems that 
+                leverage the power of artificial intelligence and machine learning, particularly 
+                in the field of computer vision. I have a passion for building efficient and 
+                robust full-stack solutions, ensuring seamless integration between the front-end and 
+                AI-driven back-end systems.
+              </p>
+              <p class="contact-text">
+                I'm also an open-source developer, and in my spare time, I produce
+                and record music.
+              </p>
+              <img
+                src="/static/images/signatures.png"
+                alt="Erazem Kos"
+                class="signatures"
+                loading="lazy"
+              />
+            </div>
+            <form action="/submit-form/" method="post" class="contact-form">
+              <div class="form-field">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" required />
+              </div>
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  inputmode="email"
+                />
+              </div>
+              <div class="form-field">
+                <label for="message">How can I help you?</label>
+                <textarea name="message" id="message" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-cta">Send</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="modal-container" style="display:none;">
+        <div id="modal">
+            <p>Your message was sent successfully and I will get back to you shortly.</p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <nav>
+            <ol class="footer-links">
+              <li class="footer-link">
+                <a title="GitHub" href="https://github.com/erazemkos" target="_blank" rel="noopener"
+                  ><img
+                    loading="lazy"
+                    src="/static/images/social-links/github.svg"
+                    alt="GitHub"
+                /></a>
+              </li>
+              <li class="footer-link">
+                <a title="Linkedin" href="https://www.linkedin.com/in/erazem-kos/" target="_blank" rel="noopener"
+                  ><img
+                    loading="lazy"
+                    src="/static/images/social-links/linkedin.svg"
+                    alt="Linkedin"
+                /></a>
+              </li>
+            </ol>
+          </nav>
+          <p class="footer-text">
+            &copy; <span>2024</span> - <a target="_blank" rel="noopener" href="https://github.com/erazemkos">Erazem Kos</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script>
+    function handleSubmit(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const form = event.target;
+        const data = new FormData(form);
+
+        fetch('/submit-form/', {
+            method: 'POST',
+            body: data,
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.message);
+            showModal();
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
+    function showModal() {
+        document.getElementById("modal-container").style.display = "flex"; // Changed to flex to work with the CSS
+    }
+
+    function closeModal() {
+        document.getElementById("modal-container").style.display = "none";
+    }
+
+    document.querySelector('.contact-form').addEventListener('submit', handleSubmit);
+  </script>
+
+</html>
