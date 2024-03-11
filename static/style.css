@@ -572,14 +572,16 @@ body.light .header {
   transition: all 2.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+
 @media (max-width: 845px) {
   .logo {
-    max-inline-size: 100px;
+    max-inline-size: 85px;
   }
-
+  /*
   .logo-group:last-child {
     display: none;
   }
+  */
 }
 
 @media (max-width: 400px) {

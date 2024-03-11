@@ -17,10 +17,12 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+
 @app.post("/submit-form/")
 def handle_form_submission(name: str = Form(...), email: str = Form(...), message: str = Form(...)):
     send_email(name, email, message)
     return JSONResponse(status_code=200, content={"message": "Email sent successfully"})
+
 
 def send_email(name, email, message):
     sender_email = os.getenv("SENDER_EMAIL")
@@ -34,7 +36,6 @@ def send_email(name, email, message):
             server.sendmail(sender_email, receiver_email, f"Subject: New Inquiry\n\nName: {name}\nEmail: {email}\nMessage: {message}")
     except Exception as e:
         print(e)
-
 
 
 if __name__ == "__main__":
