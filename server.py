@@ -19,7 +19,7 @@ async def read_root(request: Request):
 
 @app.post("/submit-form/")
 def handle_form_submission(name: str = Form(...), email: str = Form(...), message: str = Form(...)):
-    #send_email(name, email, message)
+    send_email(name, email, message)
     return JSONResponse(status_code=200, content={"message": "Email sent successfully"})
 
 def send_email(name, email, message):
