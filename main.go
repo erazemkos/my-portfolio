@@ -11,10 +11,8 @@ import (
 )
 
 func main() {
-  // Load environment variables
-  if err := godotenv.Load(); err != nil {
-      panic("Error loading .env file")
-    }
+  // Load environment variables from .env file if present
+  godotenv.Load()
 
   // Create a new instance of Echo
   e := echo.New()
@@ -34,7 +32,7 @@ func main() {
   e.POST("/submit-form", handleFormSubmission)
 
   // Start server
-  e.Logger.Fatal(e.Start("127.0.0.1:8080"))
+  e.Logger.Fatal(e.Start("0.0.0.0:8080"))
 }
 
 func handleFormSubmission(c echo.Context) error {
