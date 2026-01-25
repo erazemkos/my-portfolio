@@ -302,7 +302,7 @@
                 loading="lazy"
               />
             </div>
-            <form action="/submit-form/" method="post" class="contact-form">
+            <form action="/submit-form" method="post" class="contact-form">
               <div class="form-field">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" required />
@@ -372,7 +372,7 @@
         const form = event.target;
         const data = new FormData(form);
 
-        fetch('/submit-form/', {
+        fetch('/submit-form', {
             method: 'POST',
             body: data,
         })
