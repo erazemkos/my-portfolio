@@ -2,10 +2,7 @@ module portfolio
 
 go 1.23.0
 
-require (
-	github.com/joho/godotenv v1.5.1
-	github.com/labstack/echo/v4 v4.12.0
-)
+require github.com/labstack/echo/v4 v4.12.0
 
 require (
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect

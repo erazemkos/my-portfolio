@@ -1035,7 +1035,7 @@ body.dark .work-links img {
 }
 
 .contact-textbox,
-.contact-form {
+.contact-panel {
   padding: var(--gutter-large) var(--gutter-small);
 }
 
@@ -1098,53 +1098,44 @@ body.light .signatures {
   filter: invert(1);
 }
 
-.contact-form {
+.contact-panel {
   background-color: var(--bg-color-secondary);
   border-top-right-radius: var(--gutter-nano);
   border-bottom-right-radius: var(--gutter-nano);
 }
 
-.form-field label,
-.form-field input,
-.form-field textarea {
-  display: block;
-  width: 100%;
+.contact-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.form-field label {
+.contact-panel-eyebrow {
   color: var(--important);
-}
-
-.form-field input,
-.form-field textarea {
   font-size: var(--text-small);
-  color: var(--sub);
-  border: none;
-  outline: none;
-  border-bottom: 1px solid var(--border);
-  background-color: transparent;
-}
-
-.form-field input:focus,
-.form-field textarea:focus {
-  border-color: #888;
-}
-
-.form-field input,
-.form-field textarea {
-  margin-block-end: var(--gutter-small);
-  padding: var(--gutter-nano);
-  margin-inline: var(--gutter-nano);
-}
-
-.form-field label {
-  font-size: var(--text-small);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
   margin-block-end: var(--gutter-nano);
-  margin-inline-start: var(--gutter-nano);
 }
 
-.contact-form button[type="submit"] {
-  border: none;
+.contact-panel-title {
+  margin-block-end: var(--gutter-small);
+}
+
+.contact-panel-text {
+  color: var(--sub);
+  margin-block-end: var(--gutter-medium);
+}
+
+.contact-panel .btn {
+  align-self: flex-start;
+}
+
+@media (max-width: 1032px) {
+  .contact-panel {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: var(--gutter-nano);
+  }
 }
 
 /* --------------------------------- */
@@ -1282,56 +1273,3 @@ html {
   scroll-behavior: smooth;
 }
 
-
-#modal-container {
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    display: flex;
-    align-items: center; /* Align vertically */
-    justify-content: center; /* Align horizontally */
-}
-
-#modal {
-    background-color: #0C0A0A;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #444;
-    border-radius: 10px;
-    width: 50%; /* Could be more or less, depending on screen size */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    animation-name: animatetop;
-    animation-duration: 0.4s;
-    text-align: center;
-    max-width: 300px;
-}
-
-#modal button {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    background-color: #0C0A0A;
-    color: white;
-    border: 1px solid #444;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-#modal button:hover {
-    background-color: #FFFFFF;
-    color: #0C0A0A;
-}
-
-
-
-/* Add Animation */
-@keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
-}
