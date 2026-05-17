@@ -15,10 +15,22 @@ func main() {
 
 	// Serve static files
 	e.Static("/static", "static")
+	e.Static("/credit/assets", "credit/assets")
+
+	// Hidden credit calculator. It is intentionally not linked from the portfolio.
+	e.GET("/credit", func(c echo.Context) error {
+		return c.File("credit/index.html")
+	})
+	e.GET("/credit/", func(c echo.Context) error {
+		return c.File("credit/index.html")
+	})
+	e.GET("/credit/*", func(c echo.Context) error {
+		return c.File("credit/index.html")
+	})
 
 	// Route => handler
 	e.GET("/", func(c echo.Context) error {
-		return c.File("index.html") // Ensure you have an index.html in your root directory
+		return c.File("index.html")
 	})
 
 	// Start server

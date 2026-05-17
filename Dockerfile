@@ -17,6 +17,7 @@ WORKDIR /app
 COPY --from=builder /app/server .
 COPY --from=builder /app/index.html .
 COPY --from=builder /app/static ./static
+COPY --from=builder /app/credit ./credit
 
 EXPOSE 8080
 
