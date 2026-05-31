@@ -1,0 +1,204 @@
+{
+  "name": "Projekt Hisa",
+  "currency": "EUR",
+  "updatedAt": "2026-05-31T14:42:17.302Z",
+  "floors": [
+    {
+      "id": "floor-ground",
+      "name": "1. Nadstropje",
+      "width": 1200,
+      "height": 800,
+      "rooms": [
+        {
+          "id": "room-kitchen",
+          "name": "Kuhinja",
+          "type": "kitchen",
+          "x": 30,
+          "y": 274,
+          "w": 330,
+          "h": 490,
+          "materialGroupIds": [],
+          "points": [
+            {
+              "x": 30,
+              "y": 274
+            },
+            {
+              "x": 360,
+              "y": 274
+            },
+            {
+              "x": 360,
+              "y": 764
+            },
+            {
+              "x": 30,
+              "y": 764
+            }
+          ]
+        },
+        {
+          "id": "room-living",
+          "name": "Dnevna Soba",
+          "type": "living",
+          "x": 360,
+          "y": 383,
+          "w": 430,
+          "h": 380,
+          "materialGroupIds": [
+            "mat-mptu20sw-cfvn8"
+          ],
+          "points": [
+            {
+              "x": 360,
+              "y": 383
+            },
+            {
+              "x": 790,
+              "y": 383
+            },
+            {
+              "x": 790,
+              "y": 763
+            },
+            {
+              "x": 360,
+              "y": 763
+            }
+          ]
+        },
+        {
+          "id": "room-bath",
+          "name": "Kopalnica",
+          "type": "bathroom",
+          "x": 439,
+          "y": 86,
+          "w": 362,
+          "h": 167,
+          "materialGroupIds": [],
+          "points": [
+            {
+              "x": 439,
+              "y": 86
+            },
+            {
+              "x": 801,
+              "y": 86
+            },
+            {
+              "x": 801,
+              "y": 253
+            },
+            {
+              "x": 439,
+              "y": 253
+            }
+          ]
+        },
+        {
+          "id": "room-mpttzkbj-yulsw",
+          "name": "Soba",
+          "type": "other",
+          "x": 826,
+          "y": 75,
+          "w": 325,
+          "h": 685,
+          "materialGroupIds": [
+            "mat-mptu20sw-cfvn8"
+          ],
+          "points": [
+            {
+              "x": 826,
+              "y": 75
+            },
+            {
+              "x": 1151,
+              "y": 75
+            },
+            {
+              "x": 1151,
+              "y": 760
+            },
+            {
+              "x": 826,
+              "y": 760
+            }
+          ]
+        },
+        {
+          "id": "room-mptvw5eo-cun7e",
+          "name": "Utility",
+          "type": "utility",
+          "x": 172,
+          "y": 89,
+          "w": 240,
+          "h": 165,
+          "points": [
+            {
+              "x": 172,
+              "y": 89
+            },
+            {
+              "x": 412,
+              "y": 89
+            },
+            {
+              "x": 412,
+              "y": 254
+            },
+            {
+              "x": 172,
+              "y": 254
+            }
+          ],
+          "materialGroupIds": []
+        }
+      ]
+    },
+    {
+      "id": "floor-mptu1i2t-4blqq",
+      "name": "2. Nadstropje",
+      "width": 1200,
+      "height": 800,
+      "rooms": []
+    }
+  ],
+  "materialGroups": [
+    {
+      "id": "mat-mptu20sw-cfvn8",
+      "name": "Parket",
+      "category": "flooring",
+      "unit": "m²",
+      "quantity": 1,
+      "roomIds": [
+        "room-living",
+        "room-mpttzkbj-yulsw"
+      ],
+      "selectedCandidateId": null,
+      "candidates": [
+        {
+          "id": "cand-mptu5ted-jbzwr",
+          "name": "Parket Varius",
+          "vendor": "www.bauhaus.si",
+          "sourceUrl": "https://www.bauhaus.si/parket-na-klik/parket-oljeni-hrast-varius/p/30120613",
+          "imageUrl": "https://media.cdn.bauhaus/m/363884/12.webp",
+          "price": 55,
+          "quantity": "",
+          "notes": "",
+          "quantityMode": "area"
+        },
+        {
+          "id": "cand-mptw0bby-ibc9w",
+          "name": "Gotovi Parket Artisan Hrast Rustik Tgp 4l Mat Lak Bc",
+          "vendor": "merkur.si",
+          "sourceUrl": "https://www.merkur.si/izgotovljeni-parket-artisan-hrast-rustik-tgp-4l-mat-lak-bc/",
+          "imageUrl": "https://www.merkur-static.si/media/catalog/product/cache/8b71aa79053ea777eb0e99418b0c5dd1/i/z/izgotovljeni-parket-artisan-hrast-rustik-tgp-4l-mat-lak-bc-3511074.jpg",
+          "price": 40,
+          "quantityMode": "area",
+          "quantity": "",
+          "notes": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Načrtovalnik notranje opreme hiše</title>
+  <link rel="stylesheet" href="/hisa/assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Načrtovalnik notranje opreme</h1>
+      <p>Nariši tlorise, primerjaj materiale, izberi končne kandidate in spremljaj stroške.</p>
+    </div>
+    <div class="status">
+      <span id="saveStatus">Nalaganje…</span>
+      <button id="exportBtn" class="secondary">Izvozi JSON</button>
+      <label class="button secondary" for="importFile">Uvozi JSON</label>
+      <input id="importFile" type="file" accept="application/json" hidden />
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <aside class="panel sidebar">
+      <section>
+        <h2>Projekt</h2>
+        <label>Ime projekta<input id="projectName" /></label>
+        <label>Valuta<input id="currency" placeholder="EUR" /></label>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <h2>Etaže</h2>
+          <button id="addFloorBtn">+ Etaža</button>
+        </div>
+        <div id="floorList" class="list"></div>
+      </section>
+
+      <section>
+        <h2>Izbran prostor</h2>
+        <div id="roomInspector" class="muted">Izberi ali nariši prostor.</div>
+      </section>
+    </aside>
+
+    <section class="workspace">
+      <div class="panel plan-panel">
+        <div class="section-title">
+          <div>
+            <h2 id="floorTitle">Tloris</h2>
+            <p class="hint">Klikni »Nariši prostor« za vogale. Stranske dolžine se prikazujejo sproti. Za premik pogleda povleci prazno ozadje; s koleščkom miške približaš/oddaljiš.</p>
+          </div>
+          <div class="toolbar">
+            <button id="drawRoomBtn">Nariši prostor</button>
+            <button id="finishDrawBtn" class="secondary hidden">Zaključi prostor</button>
+            <button id="cancelDrawBtn" class="secondary hidden">Prekliči risanje</button>
+            <button id="zoomOutBtn" class="secondary">−</button>
+            <button id="zoomInBtn" class="secondary">+</button>
+            <button id="fitViewBtn" class="secondary">Prikaži vse</button>
+          </div>
+        </div>
+        <svg id="planSvg" class="plan" viewBox="0 0 1200 800" role="img" aria-label="Tloris"></svg>
+      </div>
+
+      <div class="panel summary-panel">
+        <div class="section-title">
+          <h2>Povzetek proračuna</h2>
+        </div>
+        <div id="summary"></div>
+      </div>
+    </section>
+
+    <aside class="panel materials-panel">
+      <div class="section-title">
+        <div>
+          <h2>Materiali in kandidati</h2>
+          <p class="hint">Najprej ustvari seznam odločitve, nato dodaj več kandidatov in pozneje izberi končnega.</p>
+        </div>
+        <button id="newGroupBtn">+ Seznam</button>
+      </div>
+
+      <nav class="tabs" aria-label="Načini urejanja materialov">
+        <button class="tab-button active" data-tab="lists">Seznami</button>
+        <button class="tab-button" data-tab="details">Nastavitve</button>
+        <button class="tab-button" data-tab="candidates">Kandidati</button>
+      </nav>
+
+      <section id="tab-lists" class="tab-panel active">
+        <h3>Seznami odločitev</h3>
+        <p class="hint">Primer: »Talne ploščice v kopalnici«. Odpri seznam za urejanje ali dodajanje kandidatov.</p>
+        <div id="groupList" class="list material-list"></div>
+      </section>
+
+      <section id="tab-details" class="tab-panel">
+        <h3>Nastavitve izbranega seznama</h3>
+        <div id="groupEditor" class="editor hidden"></div>
+      </section>
+
+      <section id="tab-candidates" class="tab-panel">
+        <h3>Kandidati izbranega seznama</h3>
+        <div id="candidatePanel" class="muted">Izberi seznam materialov.</div>
+      </section>
+    </aside>
+  </main>
+
+  <template id="roomInspectorTemplate">
+    <div class="grid two">
+      <label>Ime<input data-field="name" /></label>
+      <label>Tip
+        <select data-field="type">
+          <option value="bathroom">Kopalnica</option>
+          <option value="kitchen">Kuhinja</option>
+          <option value="bedroom">Spalnica</option>
+          <option value="living">Dnevna soba</option>
+          <option value="hall">Hodnik / povezava</option>
+          <option value="utility">Utility / shramba</option>
+          <option value="other">Drugo</option>
+        </select>
+      </label>
+      <label>X<input data-field="x" type="number" min="0" /></label>
+      <label>Y<input data-field="y" type="number" min="0" /></label>
+      <label>Širina<input data-field="w" type="number" min="20" /></label>
+      <label>Višina<input data-field="h" type="number" min="20" /></label>
+    </div>
+    <h3>Uporabljeni seznami materialov</h3>
+    <div data-role="roomGroups" class="checkbox-list"></div>
+    <button data-action="deleteRoom" class="danger">Izbriši prostor</button>
+  </template>
+
+  <script src="/hisa/assets/app.js"></script>
+</body>
+</html>

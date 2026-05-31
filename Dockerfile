@@ -18,6 +18,14 @@ COPY --from=builder /app/server .
 COPY --from=builder /app/index.html .
 COPY --from=builder /app/static ./static
 COPY --from=builder /app/credit ./credit
+COPY --from=builder /app/hisa ./hisa
+
+# Hisa stores project state in this JSON-backed directory. Mount this path
+# as a Docker volume/bind mount in production to keep runtime edits across
+# container rebuilds/recreates. The current project.json is also copied into
+# the image as the initial state.
+ENV HISA_DATA_DIR=/app/hisa/data
+VOLUME ["/app/hisa/data"]
 
 EXPOSE 8080
 
