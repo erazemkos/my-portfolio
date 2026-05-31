@@ -40,6 +40,7 @@ let activeRightTab = 'lists';
 const candidateDrafts = {};
 const planViews = {};
 let editingCandidateId = null;
+let saveConflict = false;
 
 const el = {
   saveStatus: $('#saveStatus'), projectName: $('#projectName'), currency: $('#currency'),
@@ -255,8 +256,12 @@ function finishDrawRoom() {
 function changed({ render = false, immediate = false } = {}) {
   project.updatedAt = new Date().toISOString();
   if (render) renderAll();
-  setStatus('Neshranjene spremembe…');
   clearTimeout(saveTimer);
+  if (saveConflict) {
+    setStatus('Konflikt shranjevanja — osveži stran pred nadaljnjim urejanjem.');
+    return;
+  }
+  setStatus('Neshranjene spremembe…');
   if (immediate) saveProject();
   else saveTimer = setTimeout(saveProject, 550);
 }
@@ -265,7 +270,16 @@ async function saveProject() {
   try {
     setStatus('Shranjevanje…');
     const res = await fetch(`${API_BASE}/project`, { method: 'PUT', headers: { 'content-type': 'application/json' }, body: JSON.stringify(project) });
-    if (!res.ok) throw new Error((await res.json()).error || 'Shranjevanje ni uspelo');
+    const data = await res.json();
+    if (res.status === 409) {
+      saveConflict = true;
+      setStatus(data.error || 'Projekt je bil spremenjen drugje. Osveži stran.');
+      alert(data.error || 'Projekt je bil spremenjen drugje. Osveži stran.');
+      return;
+    }
+    if (!res.ok) throw new Error(data.error || 'Shranjevanje ni uspelo');
+    if (data.revision !== undefined) project.revision = data.revision;
+    if (data.updatedAt) project.updatedAt = data.updatedAt;
     lastSavedAt = new Date();
     setStatus(`Shranjeno ${lastSavedAt.toLocaleTimeString()}`);
   } catch (error) {

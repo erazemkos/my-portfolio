@@ -95,10 +95,59 @@ func ensureHisaDataFile(path string) error {
 
 func getHisaProject(path string) echo.HandlerFunc {
 	return func(c echo.Context) error {
-		if err := ensureHisaDataFile(path); err != nil {
+		project, err := readHisaProject(path)
+		if err != nil {
 			return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
 		}
-		return c.File(path)
+		if _, ok := project["revision"]; !ok {
+			project["revision"] = float64(1)
+			_ = writeHisaProject(path, project)
+		}
+		return c.JSON(http.StatusOK, project)
+	}
+}
+
+func readHisaProject(path string) (map[string]any, error) {
+	if err := ensureHisaDataFile(path); err != nil {
+		return nil, err
+	}
+	payload, err := os.ReadFile(path)
+	if err != nil {
+		return nil, err
+	}
+	var project map[string]any
+	if err := json.Unmarshal(payload, &project); err != nil {
+		return nil, err
+	}
+	return project, nil
+}
+
+func writeHisaProject(path string, project map[string]any) error {
+	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+		return err
+	}
+	payload, err := json.MarshalIndent(project, "", "  ")
+	if err != nil {
+		return err
+	}
+	tmp := path + ".tmp"
+	if err := os.WriteFile(tmp, payload, 0o644); err != nil {
+		return err
+	}
+	return os.Rename(tmp, path)
+}
+
+func projectRevision(project map[string]any) int {
+	switch revision := project["revision"].(type) {
+	case float64:
+		return int(revision)
+	case int:
+		return revision
+	case json.Number:
+		value, _ := revision.Int64()
+		return int(value)
+	default:
+		return 1
 	}
 }
 
@@ -114,23 +163,26 @@ func putHisaProject(path string) echo.HandlerFunc {
 		if _, ok := project["materialGroups"].([]any); !ok {
 			return c.JSON(http.StatusBadRequest, map[string]string{"error": "Neveljaven JSON projekta: pričakovan je materialGroups[]."})
 		}
-		project["updatedAt"] = time.Now().UTC().Format(time.RFC3339Nano)
-
-		if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
-			return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
-		}
-		payload, err := json.MarshalIndent(project, "", "  ")
+		currentProject, err := readHisaProject(path)
 		if err != nil {
 			return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
 		}
-		tmp := path + ".tmp"
-		if err := os.WriteFile(tmp, payload, 0o644); err != nil {
+		incomingRevision := projectRevision(project)
+		currentRevision := projectRevision(currentProject)
+		if incomingRevision != currentRevision {
+			return c.JSON(http.StatusConflict, map[string]any{
+				"error":           "Projekt je bil medtem spremenjen drugje. Osveži stran in ponovno uporabi spremembe.",
+				"currentRevision": currentRevision,
+			})
+		}
+
+		project["updatedAt"] = time.Now().UTC().Format(time.RFC3339Nano)
+		project["revision"] = currentRevision + 1
+
+		if err := writeHisaProject(path, project); err != nil {
 			return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
 		}
-		if err := os.Rename(tmp, path); err != nil {
-			return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
-		}
-		return c.JSON(http.StatusOK, map[string]any{"ok": true, "updatedAt": project["updatedAt"]})
+		return c.JSON(http.StatusOK, map[string]any{"ok": true, "updatedAt": project["updatedAt"], "revision": project["revision"]})
 	}
 }
 
